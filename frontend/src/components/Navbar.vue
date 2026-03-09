@@ -9,6 +9,7 @@
       <li><router-link to="/menu">Menu</router-link></li>
       <li><router-link to="/about">About</router-link></li>
       <li><router-link to="/contact">Contact</router-link></li>
+      <li><router-link to="/location">Location</router-link></li>
     </ul>
   </nav>
 </template>
@@ -19,15 +20,36 @@
 
 <style scoped>
 
+/* .navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 100px;
+  background: #ffffff;
+  color: #e45604;
+  width: 100%;
+  height: 6rem;
+  position: fixed;
+} */
+
 .navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 40px;
-  background:#e45604;
-  color:white;
-  width: 100%;
-  height: 6rem;
+
+  padding:15px 100px;
+  background:#ffffff;
+  color:#e45604;
+
+  width:100%;
+  height:6rem;
+
+  position:fixed;
+  top:0;
+  left:0;
+
+  z-index:1000;
+  box-sizing:border-box;
 }
 
 .logo{
@@ -43,7 +65,7 @@
 
 .nav-links a{
   text-decoration:none;
-  color:white;
+  color:#000000;
   font-weight: 500;
   font-size: large;
 
@@ -52,7 +74,7 @@
 
 /* active page underline */
 .nav-links a.router-link-active{
-  border-bottom:2px solid #ffffff;
+  border-bottom:2px solid #e45604;
 }
 
 
