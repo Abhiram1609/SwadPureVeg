@@ -1,11 +1,12 @@
 <template>
-  <nav class="navbar">
+  <nav :class="['navbar', { 'navbar-scrolled': scrolled }]">
     <div class="logo">
       <img src="../components/img/swad_logo.svg" alt="Swad Pure Veg Logo" class="logo-image">
       Swad Pure Veg
     </div>
 
-    <ul class="nav-links">
+    <!-- <ul class="nav-links"> -->
+    <ul :class="['nav-links' , {'nav-links-scrolled':scrolled}]">
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/menu">Menu</router-link></li>
       <li><router-link to="/about">About</router-link></li>
@@ -16,22 +17,32 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 
+const scrolled = ref(false)
+
+const handleScroll = () => {
+  const hero = document.querySelector('.hero')
+  const heroHeight = hero?.offsetHeight || 500
+  scrolled.value = window.scrollY > heroHeight
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
 
-/* .navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 100px;
-  background: #ffffff;
-  color: #e45604;
-  width: 100%;
-  height: 6rem;
-  position: fixed;
-} */
+.navbar-scrolled{
+  background:#e45604 !important;
+  transition: 0.3s ease;
+  color: #ffffff !important;
+}
 
 .navbar{
   display:flex;
@@ -81,6 +92,10 @@
   transition: color 0.3s ease;
 }
 
+.nav-links-scrolled a{
+    color: #ffffff;
+}
+
 .nav-links a::after{
   content: '';
   position: absolute;
@@ -90,6 +105,10 @@
   height: 2px;
   background-color: #e45604;
   transition: width 0.3s ease;
+}
+
+.nav-links-scrolled a::after{
+  background-color: #ffffff;
 }
 
 .nav-links a:hover::after{

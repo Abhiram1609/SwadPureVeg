@@ -22,9 +22,9 @@ onMounted(() => {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateCount(years, 2000, 5);
-        animateCount(customers, 2000, 1000);
-        animateCount(items, 2000, 50);
+        animateCount(years, 1000, 5);
+        animateCount(customers, 1000, 1000);
+        animateCount(items, 1000, 50);
         observer.unobserve(entry.target);
       }
     });
@@ -165,6 +165,51 @@ onMounted(() => {
 
             <h4>Anjali P.</h4>
             <span>Office Worker</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="sitemap">
+
+        <div class="sitemap-container">
+
+            <!-- Restaurant Info -->
+            <div class="sitemap-col">
+            <h2>Swad Pure Veg</h2>
+            <p>Serving fresh and delicious vegetarian fast food in Navi Mumbai.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="sitemap-col">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><RouterLink to="/">Home</RouterLink></li>
+                <li><RouterLink to="/menu">Menu</RouterLink></li>
+                <li><RouterLink to="/about">About</RouterLink></li>
+                <li><RouterLink to="/contact">Contact</RouterLink></li>
+            </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="sitemap-col">
+                <h2>Contact</h2>
+
+                <div class="contact-item">
+                    <span>📍</span>
+                    <p>Silver height, Shop no 6,7,8, Plot no A5, Sector 19B, Ulwe, Navi Mumbai</p>
+                </div>
+
+                <div class="contact-item">
+                    <span>📞</span>
+                    <p>+91 XXXXX XXXXX</p>
+                </div>
+
+                <div class="contact-item">
+                    <span>🟢</span>
+                    <p>WhatsApp Orders Available</p>
+                </div>
             </div>
 
         </div>
@@ -396,8 +441,9 @@ onMounted(() => {
 
 .reviews{
   background:#eef1f3;
-  padding:80px 40px;
-  text-align:center;
+  padding: 0px 40px;
+  padding-bottom: 80px ;
+  text-align: center;
 }
 
 .review-title{
@@ -455,6 +501,112 @@ onMounted(() => {
 .review-card span{
   font-size:14px;
   color:#777;
+}
+
+.sitemap{
+  background: linear-gradient(135deg, #0f172a 0%, #1a2540 100%);
+  color:white;
+  padding: 20px 40px;
+}
+
+.sitemap-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 60px;
+}
+
+.sitemap-col{
+  padding: 20px;
+}
+
+.sitemap-col h2{
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #f5f7fa;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.sitemap-col h2::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  border-bottom: #e45604 2px solid;
+}
+
+.sitemap-col p{
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.sitemap-col ul{
+  list-style:none;
+  padding:0;
+  margin: 0;
+}
+
+.sitemap-col ul li{
+  margin-bottom: 12px;
+}
+
+.sitemap-col a{
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 4px 0;
+  position: relative;
+}
+
+.sitemap-col a::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff7600;
+  transition: width 0.3s ease;
+}
+
+.sitemap-col a:hover{
+  color: #f97316;
+}
+
+.sitemap-col a:hover::after{
+  width: 100%;
+}
+
+.contact-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+.contact-item:last-child{
+  border-bottom: none;
+}
+
+.contact-item span{
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.contact-item p{
+  margin: 0;
+  line-height: 1.5;
+  color: #cbd5e1;
+  font-size: 0.95rem;
 }
 
 </style>
