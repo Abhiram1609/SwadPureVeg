@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="logo">
+      <img src="../components/img/swad_logo.svg" alt="Swad Pure Veg Logo" class="logo-image">
       Swad Pure Veg
     </div>
 
@@ -55,6 +56,14 @@
 .logo{
   font-size:22px;
   font-weight:bold;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.logo-image{
+  height: 200px;
+  width: 200px;
 }
 
 .nav-links{
@@ -68,13 +77,33 @@
   color:#000000;
   font-weight: 500;
   font-size: large;
+  position: relative;
+  transition: color 0.3s ease;
+}
 
+.nav-links a::after{
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e45604;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after{
+  width: 100%;
 }
 
 
 /* active page underline */
 .nav-links a.router-link-active{
-  border-bottom:2px solid #e45604;
+  border-bottom:none;
+}
+
+.nav-links a.router-link-active::after{
+  width: 100%;
 }
 
 
