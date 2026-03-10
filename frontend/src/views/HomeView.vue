@@ -5,7 +5,7 @@ const years = ref(0);
 const customers = ref(0);
 const items = ref(0);
 
-function animateCount(target, duration = 2000, final) {
+function animateCount(target, duration, final) {
   let start = 0;
   const stepTime = Math.abs(Math.floor(duration / (final || 1)));
   const timer = setInterval(() => {
