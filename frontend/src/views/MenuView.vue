@@ -84,86 +84,11 @@ export default {
       selectedStyle: {},
       collapsedSections: {},
       menu: [
-        {
-          name: 'Veg Tikki Burger',
-          category: 'Burgers',
-          styles: [
-            { name: 'Plain', price: 70 },
-            { name: 'With Schezwan', price: 100 },
-            { name: 'With Cheese', price: 100 },
-            { name: 'Cheese + Schezwan', price: 120 }
-          ]
-        },
-        {
-          name: 'Aloo Tikki Burger',
-          category: 'Burgers',
-          styles: [
-            { name: 'Plain', price: 70 },
-            { name: 'With Schezwan', price: 100 },
-            { name: 'With Cheese', price: 100 },
-            { name: 'Cheese + Schezwan', price: 120 }
-          ]
-        },
-        {
-          name: 'Schezwan Burger',
-          category: 'Burgers',
-          styles: [
-            { name: 'Plain', price: 80 },
-            { name: 'With Cheese', price: 110 }
-          ]
-        },
-        {
-          name: 'Crispy Veggie Burger',
-          category: 'Burgers',
-          styles: [
-            { name: 'Plain', price: 80 },
-            { name: 'With Schezwan', price: 110 },
-            { name: 'With Cheese', price: 110 },
-            { name: 'Cheese + Schezwan', price: 130 }
-          ]
-        },
-        {
-          name: 'Paneer Butter masala',
-          category: 'Main Course',
-        //   styles: [
-        //     { name: 'Plain', price: 80 },
-        //     { name: 'With Schezwan', price: 110 },
-        //     { name: 'With Cheese', price: 110 },
-        //     { name: 'Cheese + Schezwan', price: 130 }
-        //   ]
-        },
-        {
-          name: 'Paneer mutter masala',
-          category: 'Main Course',
-        //   styles: [
-        //     { name: 'Plain', price: 80 },
-        //     { name: 'With Schezwan', price: 110 },
-        //     { name: 'With Cheese', price: 110 },
-        //     { name: 'Cheese + Schezwan', price: 130 }
-        //   ]
-        },
-        {
-          name: 'Paneer Butter masala',
-          category: 'Main Course',
-        //   styles: [
-        //     { name: 'Plain', price: 80 },
-        //     { name: 'With Schezwan', price: 110 },
-        //     { name: 'With Cheese', price: 110 },
-        //     { name: 'Cheese + Schezwan', price: 130 }
-        //   ]
-        },
-        {
-          name: 'Paneer Butter masala',
-          category: 'Main Course',
-        //   styles: [
-        //     { name: 'Plain', price: 80 },
-        //     { name: 'With Schezwan', price: 110 },
-        //     { name: 'With Cheese', price: 110 },
-        //     { name: 'Cheese + Schezwan', price: 130 }
-        //   ]
-        }
       ]
     }
+  },
+  mounted() {
+    this.fetchMenu()
   },
   computed: {
     categories() {
@@ -216,6 +141,21 @@ export default {
       const phone = '919999999999'
       const message = `Hello, I want to order ${itemName} (${style.name} ₹${style.price})`
       window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank')
+    },
+    async fetchMenu() {
+    try {
+
+            const response = await fetch("http://localhost:5000/menu")
+
+            const data = await response.json()
+
+            this.menu = data
+
+        } catch (error) {
+
+            console.error("Error loading menu:", error)
+
+        }
     }
   }
 }
