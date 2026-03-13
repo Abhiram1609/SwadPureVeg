@@ -36,7 +36,7 @@
           :class="{ active: selectedCategory === cat }"
           @click="selectedCategory = cat"
         >
-          {{ categoryEmoji(cat) }} {{ cat }} ({{ countByCategory(cat) }})
+          {{ cat }} ({{ countByCategory(cat) }})
         </button>
       </div>
     </section>
@@ -71,7 +71,6 @@
     <section class="menu-section" v-for="block in groupedMenu" :key="block.category">
       <div class="section-head" @click="toggleSection(block.category)" role="button">
         <div>
-          <span class="section-icon">🍔</span>
           <h2>{{ block.category.toUpperCase() }}</h2>
         </div>
         <span class="expand">{{ isCollapsed(block.category) ? '▼' : '▲' }}</span>
@@ -83,12 +82,6 @@
             <h3>{{ item.name }}</h3>
             <span class="price">₹{{ item.price }}</span>
           </div>
-
-          <!-- <div class="quantity-control">
-            <button class="qty-btn" @click="changeQuantity(item, -1)" :disabled="(itemQuantities[item.name] || 0) === 0">-</button>
-            <span class="qty-label">{{ itemQuantities[item.name] || 0 }}</span>
-            <button class="qty-btn" @click="changeQuantity(item, 1)">+</button>
-          </div> -->
 
           <div class="qty-price-section">
 
@@ -187,10 +180,6 @@ export default {
     }
   },
   methods: {
-    categoryEmoji(cat) {
-      const map = { Burgers: '🍔', Chaat: '🥗', Snacks: '🍟', Chinese: '🥡', Drinks: '🥤', Juices: '🧃', Milkshakes: '🥛', Mocktails: '🍹' }
-      return map[cat] || '🍴'
-    },
     countByCategory(cat) {
       return this.menu.filter((item) => item.category === cat).length
     },
@@ -319,7 +308,7 @@ export default {
 }
 
 .top-banner {
-  background: linear-gradient(145deg, #00c75f, #00a54f);
+  background: #e05819;
   text-align: center;
   color: #fff;
   padding: 30px 20px 28px;
@@ -484,6 +473,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 2px dashed #e3e3e3;
 }
 
 .quantity-control {

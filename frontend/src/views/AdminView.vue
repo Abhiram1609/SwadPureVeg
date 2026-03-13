@@ -22,8 +22,12 @@
         <section class="card">
             <h2>Current Menu</h2>
 
+            <div class="search-bar">
+                <input v-model="search" placeholder="Search menu items" />
+            </div>
+
             <div class="menu-list">
-                <div v-for="item in menu" :key="item._id" class="menu-row">
+                <div v-for="item in filteredMenu" :key="item._id" class="menu-row">
                     <div>
                         <div class="item-name">{{ item.name }}</div>
                         <div class="item-meta">{{ item.category }} - ₹{{ item.price }}</div>
@@ -54,11 +58,24 @@ export default {
                 "Beverages"
             ],
             menu: [],
+            search: "",
             newItem: {
                 name: "",
                 category: "",
                 price: ""
             }
+        }
+    },
+
+    computed: {
+        filteredMenu() {
+            const term = this.search.trim().toLowerCase();
+            if (!term) return this.menu;
+            return this.menu.filter(item => {
+                const name = item.name?.toLowerCase() || "";
+                const category = item.category?.toLowerCase() || "";
+                return name.includes(term) || category.includes(term);
+            });
         }
     },
 
@@ -125,14 +142,13 @@ select {
 }
 
 .admin-page{
-font-family:Poppins;
 background:#f4fff7;
 min-height:100vh;
 padding-bottom:40px;
 }
 
 .top-banner{
-background:linear-gradient(145deg,#00c75f,#00a54f);
+background: #e05819;
 color:white;
 text-align:center;
 padding:40px 20px;
@@ -182,6 +198,18 @@ padding:10px;
 border-radius:8px;
 font-weight:700;
 cursor:pointer;
+}
+
+.search-bar {
+  margin: 15px 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
 }
 
 .menu-list{
