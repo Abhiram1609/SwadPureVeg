@@ -117,6 +117,11 @@ onMounted(() => {
                         <p>Menu Items</p>
                     </div>
                 </div>
+                <span>
+                  <RouterLink to="/about">
+                    <button class="learnMore-btn btn-outline">learn more</button>
+                  </RouterLink>
+                </span>
             </div>
             <div class="about-image">
                 <img src="../components/img/swad logo.png" alt="Fresh vegetables at Swad Pure Veg">
@@ -391,6 +396,11 @@ onMounted(() => {
   font-weight: 700;
 }
 
+.about-content span{
+  display: flex;
+  margin-top: 5%;
+}
+
 .about-content h2::after{
   content:'';
   width:60px;
@@ -435,6 +445,31 @@ onMounted(() => {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.learnMore-btn{
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 11px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    outline: orangered;
+    transition: all 0.3s ease;
+}
+
+.btn-outline{
+  background: transparent;
+    border: 2px solid #dc2f02;
+    color: #dc2f02;
+    font-weight: 600;
+}
+
+.btn-outline:hover{
+  background: #dc2f02;
+  color: white;
+  border-color: #dc2f02;
 }
 
 /* REVIEWS SECTION */

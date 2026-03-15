@@ -152,7 +152,7 @@ background: #e05819;
 color:white;
 text-align:center;
 padding:40px 20px;
-margin-bottom:30px;
+margin:30px 0;
 }
 
 .brand{
