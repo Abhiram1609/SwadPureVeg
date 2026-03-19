@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="cart-total">Total: ₹{{ cartItems.reduce((acc, item) => acc + item.subtotal, 0) }}</div>
-          <button class="checkout-btn">Proceed to Checkout</button>
+          <button class="checkout-btn" @click="placeOrder">Proceed to Checkout</button>
         </div>
         <div v-else class="cart-empty">Your cart is empty.</div>
       </div>
@@ -212,10 +212,21 @@ export default {
         this.collapsedSections[category] = newVal
       }
     },
-    order(itemName, style) {
-      const phone = '919999999999'
-      const message = `Hello, I want to order ${itemName} (${style.name} ₹${style.price})`
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank')
+    generateOrderMessage() {
+      const lines = ['I would like to place the following order:']
+      this.cartItems.forEach((item) => {
+        lines.push(`${item.name} x ${item.quantity} = ₹${item.subtotal}`)
+      })
+      const total = this.cartItems.reduce((acc, item) => acc + item.subtotal, 0)
+      lines.push(`Total: ₹${total}`)
+      return encodeURIComponent(lines.join('\n'))
+    },
+
+    placeOrder() {
+      const phoneNumber = '917709946197' // Replace with actual phone number
+      const message = this.generateOrderMessage()
+      const url = `https://wa.me/${phoneNumber}?text=${message}`
+      window.open(url, '_blank')
     },
     async fetchMenu() {
     try {

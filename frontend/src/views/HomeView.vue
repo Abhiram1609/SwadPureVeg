@@ -646,4 +646,25 @@ onMounted(() => {
   font-size: 0.95rem;
 }
 
+
+@media (max-width: 480px) {
+  .hero{
+    padding: 60px 20px;
+    min-height: 25rem;
+  }
+  
+  .hero h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
+  .hero h2{
+    font-size: 1rem;
+  }
+
+  .button-group{
+    flex-direction: column;
+    gap: 15px;
+  }
+}
 </style>
